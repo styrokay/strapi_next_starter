@@ -60,7 +60,7 @@ function RestaurantList(props) {
                     objectFit="cover"
                     height={res.Image[0].height}
                     width={res.Image[0].width}
-                    src={process.env.NEXT_PUBLIC_API_URL + res.Image[0].url}
+                    src={process.env.ENDPOINT + res.Image[0].url}
                   />
                 </div>
                 <CardBody>

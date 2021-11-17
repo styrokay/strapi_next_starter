@@ -34,8 +34,12 @@ export default function Layout(props) {
               <a className="navbar-brand">Home</a>
             </Link>
           </NavItem>
-
           <NavItem className="ml-auto">
+            <Link href="/portfolio">
+              <a className="navbar-link">Portfolio</a>
+            </Link>
+          </NavItem>
+          <NavItem>
             <Link href="/login">
               <a className="nav-link">Sign In</a>
             </Link>

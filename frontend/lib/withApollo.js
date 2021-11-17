@@ -18,9 +18,7 @@ import { ApolloProvider } from "@apollo/react-hooks";
 export default withApollo(
   ({ initialState }) => {
     return new ApolloClient({
-      uri:
-        `${process.env.NEXT_PUBLIC_API_URL}/graphql` ||
-        "http://localhost:1337/graphql",
+      uri: `${process.env.ENDPOINT}/graphql` || "http://localhost:1337/graphql",
       cache: new InMemoryCache().restore(initialState || {}),
     });
   },
