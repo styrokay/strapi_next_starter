@@ -1,38 +1,41 @@
 import React, { useState } from "react";
 
-import { Col, Input, InputGroup, InputGroupAddon, Row } from "reactstrap";
-import RestaurantListBaked from "../../components/RestaurantListBaked";
+import gql from "graphql-tag";
+import { useQuery } from "@apollo/react-hooks";
+import withApollo from "../../lib/withApollo";
+// import { getDataFromTree } from '@apollo/react-ssr';
+
+const QUERY = gql`
+  {
+    bakeds {
+      Title
+      Description
+      Image {
+        height
+        width
+        url
+      }
+    }
+  }
+`;
 
 const baked = () => {
-  const [query, updateQuery] = useState("");
+  const { loading, data } = useQuery(QUERY);
   return (
-    <div className="container-fluid">
-      <Row>
-        <Col>
-          <div className="search">
-            <InputGroup>
-              {/*     <InputGroupAddon addonType="append"> Search </InputGroupAddon> */}
-              <Input
-                onChange={(e) =>
-                  updateQuery(e.target.value.toLocaleLowerCase())
-                }
-                value={query}
-              />
-            </InputGroup>
+    <div>
+      <h1>static example</h1>
+      {loading || !data ? "Loading..." : null}
+      <div>
+        {data ? (
+          <div>
+            {data.bakeds.map((e, index) => {
+              return <h1 key={index}>{e.Title}</h1>;
+            })}
           </div>
-          <RestaurantListBaked search={query} />
-        </Col>
-      </Row>
-      <style jsx>
-        {`
-          .search {
-            margin: 20px;
-            width: 500px;
-          }
-        `}
-      </style>
+        ) : null}
+      </div>
     </div>
   );
 };
 
-export default baked;
+export default withApollo(baked);

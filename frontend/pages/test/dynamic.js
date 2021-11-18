@@ -1,39 +1,41 @@
 import React, { useState } from "react";
 
-import { Col, Input, InputGroup, InputGroupAddon, Row } from "reactstrap";
-import RestaurantListDynamic from "../../components/RestaurantListDynamic";
+import gql from "graphql-tag";
+import { useQuery } from "@apollo/react-hooks";
 import withApollo from "../../lib/withApollo";
-import { getDataFromTree } from "@apollo/react-ssr";
+// import { getDataFromTree } from '@apollo/react-ssr';
+
+const QUERY = gql`
+  {
+    restaurants {
+      Title
+      Description
+      Image {
+        height
+        width
+        url
+      }
+    }
+  }
+`;
+
 const dynamic = () => {
-  const [query, updateQuery] = useState("");
+  const { loading, data } = useQuery(QUERY);
   return (
-    <div className="container-fluid">
-      <Row>
-        <Col>
-          <div className="search">
-            <InputGroup>
-              {/*     <InputGroupAddon addonType="append"> Search </InputGroupAddon> */}
-              <Input
-                onChange={(e) =>
-                  updateQuery(e.target.value.toLocaleLowerCase())
-                }
-                value={query}
-              />
-            </InputGroup>
+    <div>
+      <h1>dynamic example</h1>
+      {loading || !data ? "Loading..." : null}
+      <div>
+        {data ? (
+          <div>
+            {data.restaurants.map((e, index) => {
+              return <h1 key={index}>{e.Title}</h1>;
+            })}
           </div>
-          <RestaurantListDynamic search={query} />
-        </Col>
-      </Row>
-      <style jsx>
-        {`
-          .search {
-            margin: 20px;
-            width: 500px;
-          }
-        `}
-      </style>
+        ) : null}
+      </div>
     </div>
   );
 };
 
-export default withApollo(dynamic, { getDataFromTree });
+export default withApollo(dynamic);
