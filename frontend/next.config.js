@@ -8,6 +8,7 @@ module.exports = {
   },
 
   env: {
-    ENDPOINT: "http://localhost:1337",
+    /*     ENDPOINT: "http://localhost:1337", */
+    ENDPOINT: "https://fierce-cove-43938.herokuapp.com",
   },
 };
