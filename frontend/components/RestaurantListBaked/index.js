@@ -17,28 +17,28 @@ import {
 
 const QUERY = gql`
   {
-    restaurants {
+    bakeds {
       Title
       Description
       Image {
-        url
-        width
         height
+        width
+        url
       }
     }
   }
 `;
 
-function RestaurantList(props) {
+function RestaurantListBaked(props) {
   const { loading, error, data } = useQuery(QUERY);
-
+  console.log(data);
   if (error) return "Error loading restaurants";
   //if restaurants are returned from the GraphQL query, run the filter query
   //and set equal to variable restaurantSearch
   if (loading) return <h1>Fetching</h1>;
-  if (data.restaurants && data.restaurants.length) {
+  if (data.bakeds && data.bakeds.length) {
     //searchQuery
-    const searchQuery = data.restaurants.filter((query) =>
+    const searchQuery = data.bakeds.filter((query) =>
       query.Title.toLowerCase().includes(props.search)
     );
     if (searchQuery.length != 0) {
@@ -104,4 +104,4 @@ function RestaurantList(props) {
   }
   return <h5>Add Restaurants</h5>;
 }
-export default withApollo(RestaurantList);
+export default withApollo(RestaurantListBaked);
