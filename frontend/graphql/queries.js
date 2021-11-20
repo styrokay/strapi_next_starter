@@ -1,14 +1,28 @@
 import gql from "graphql-tag";
 
-export const GET_ALL_RESTAURANTS = gql`
-  query Query {
-    restaurants {
-      Title
-      Description
-      Image {
-        url
+export const GET_ALL_STATICS = gql`
+  query {
+    statics {
+      title
+      description
+      image {
         height
         width
+        url
+      }
+    }
+  }
+`;
+
+export const GET_ALL_DYNAMICS = gql`
+  query {
+    dynamics {
+      title
+      description
+      image {
+        height
+        width
+        url
       }
     }
   }

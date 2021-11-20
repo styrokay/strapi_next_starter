@@ -8,6 +8,7 @@ function Home() {
   return (
     <div className="container-fluid">
       <h1>index, just for now... | Whohoo.</h1>
+      <h2>your backend is: {process.env.BACKEND_URL}</h2>
     </div>
   );
 }

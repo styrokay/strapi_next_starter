@@ -35,13 +35,13 @@ export default function Layout(props) {
             </Link>
           </NavItem>
           <NavItem className="ml-auto">
-            <Link href="/test/dynamic">
-              <a className="navbar-link">Dynamic</a>
+            <Link href="/playground/dynamicContent">
+              <a className="navbar-link">Dynamic Content</a>
             </Link>
           </NavItem>
           <NavItem>
-            <Link href="/test/static">
-              <a className="nav-link">Static</a>
+            <Link href="/playground/staticContent">
+              <a className="nav-link">Static Content</a>
             </Link>
           </NavItem>
           <NavItem>

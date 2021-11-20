@@ -4,11 +4,11 @@ module.exports = {
 
 module.exports = {
   images: {
-    domains: ["localhost"],
+    domains: ["localhost", "storage.googleapis.com"],
   },
 
   env: {
-    /*     ENDPOINT: "http://localhost:1337", */
-    ENDPOINT: "https://fierce-cove-43938.herokuapp.com",
+    /*     BACKEND_URL: "https://fierce-cove-43938.herokuapp.com", */
+    BACKEND_URL: "http://localhost:1337",
   },
 };
