@@ -46,6 +46,6 @@ export async function getStaticProps() {
       data: data.statics,
       loading: loading,
     },
-    revalidate: 30,
+    revalidate: 60,
   };
 }
